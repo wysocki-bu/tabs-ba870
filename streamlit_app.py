@@ -29,8 +29,10 @@ tabs = st.tabs(["📋 Raw Data", "📈 Price Chart", "📊 Volume Chart", "📏 
 # Tab 1: Raw Data
 with tabs[0]:
     st.subheader(f"Raw Data for {ticker_symbol}")
-    st.write(data.tail())
-    st.download_button("Download Data as CSV", data.to_csv(), file_name=f"{ticker_symbol}_data.csv")
+    st.dataframe(data, use_container_width=True)
+
+#    st.write(data.tail())
+#    st.download_button("Download Data as CSV", data.to_csv(), file_name=f"{ticker_symbol}_data.csv")
 
 # Tab 2: Closing Price Chart
 with tabs[1]:
