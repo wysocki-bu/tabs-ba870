@@ -2,7 +2,6 @@
 import streamlit as st
 import yfinance as yf
 import pandas as pd
-#import matplotlib.pyplot as plt
 
 # Print Title for the App
 st.title("Stock Data Dashboard Using **yfinance** Package")
@@ -13,7 +12,7 @@ ticker_symbol = st.sidebar.text_input("Enter Stock Ticker (e.g., AAPL, MSFT)", v
 start_date = st.sidebar.date_input("Start Date", value=pd.to_datetime("2024-01-01"))
 end_date = st.sidebar.date_input("End Date", value=pd.to_datetime("2024-12-31"))
 
-# Fetching data
+# Update the name of ticker anbd dates and download data using yfinace "download" function
 st.write(f"Data for **{ticker_symbol}** from {start_date} to {end_date}:")
 data = yf.download(ticker_symbol, start=start_date, end=end_date)
 
@@ -21,7 +20,7 @@ if data.empty:
     st.error("No data available. Check the ticker symbol or date range.")
     st.stop()
 
-# Initialize Tabs
+# Set up the 3 tabs on the Dashboard
 tabs = st.tabs(["📋 Raw Data", "📈 Price Chart", "📊 Volume Chart"])
 
 # Tab 1: Raw Data
