@@ -14,11 +14,11 @@ start_date = st.sidebar.date_input("Start Date", value=pd.to_datetime("2024-01-0
 end_date = st.sidebar.date_input("End Date", value=pd.to_datetime("2024-12-31"))
 
 # Fetching data
-st.write(f"Fetching data for **{ticker_symbol}** from {start_date} to {end_date}...")
+st.write(f"Data for **{ticker_symbol}** from {start_date} to {end_date}:")
 data = yf.download(ticker_symbol, start=start_date, end=end_date)
 
 if data.empty:
-    st.error("No data found. Please check the ticker symbol or date range.")
+    st.error("No data available. Check the ticker symbol or date range.")
     st.stop()
 
 # Initialize Tabs
@@ -32,16 +32,16 @@ with tabs[0]:
 # Tab 2: Closing Price Chart
 with tabs[1]:
     if "Close" in data:
-        st.subheader("Closing Price Over Time")
+        st.subheader("Closing Price for {ticker_symbol}")
         st.line_chart(data['Close'])
     else:
-        st.warning("Closing price data is not available for this stock.")
+        st.warning("Closing price data is not available for ticker symbol: {ticker_symbol}.")
 
 # Tab 3: Volume Chart
 with tabs[2]:
     if "Volume" in data:
-        st.subheader("Volume Over Time")
+        st.subheader("Volume for {ticker_symbol}")
         st.bar_chart(data['Volume'])
     else:
-        st.warning("Volume data is not available for this stock.")
+        st.warning("Volume data is not available for ticker symbol: {ticker_symbol}.")
         
