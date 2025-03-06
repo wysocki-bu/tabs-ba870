@@ -1,12 +1,13 @@
+# Import necessary packages (* Make sure to also include in "requirements.txt" in this repository
 import streamlit as st
 import yfinance as yf
 import pandas as pd
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
-# Page title
-st.title("Stock Data Dashboard 📈")
+# Print Title for the App
+st.title("Stock Data Dashboard Using **yfinance** Package")
 
-# Sidebar inputs
+# Create a Sidebar which prompts for stock ticker and dates
 st.sidebar.header("BA870-AC820 StreamLit Example")
 ticker_symbol = st.sidebar.text_input("Enter Stock Ticker (e.g., AAPL, MSFT)", value="MSFT")
 start_date = st.sidebar.date_input("Start Date", value=pd.to_datetime("2024-01-01"))
