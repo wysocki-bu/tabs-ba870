@@ -32,15 +32,15 @@ with tabs[0]:
 # Tab 2: Closing Price Chart
 with tabs[1]:
     if "Close" in data:
-        st.subheader("Closing Price for {ticker_symbol}")
+        st.subheader(f"Closing Price for {ticker_symbol}")
         st.line_chart(data['Close'])
     else:
-        st.warning("Closing price data is not available for ticker symbol: {ticker_symbol}.")
+        st.warning(f"Closing price data is not available for ticker symbol: {ticker_symbol}.")
 
 # Tab 3: Volume Chart
 with tabs[2]:
     if "Volume" in data:
-        st.subheader("Volume for {ticker_symbol}")
+        st.subheader(f"Volume for {ticker_symbol}")
         st.bar_chart(data['Volume'])
     else:
         st.warning("Volume data is not available for ticker symbol: {ticker_symbol}.")
